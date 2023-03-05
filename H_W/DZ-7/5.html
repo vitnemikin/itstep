@@ -2,23 +2,15 @@
 // Пользователь вводит массив чисел userArray. 
 // Cформировать массив resultArray по правилу: resultArray[i] = userArray[1] + userArray[2] + ... + userArray[i].
 
-var int = prompt("Сумма каких первых чисел надо вставить?");
-var txtSumm = "= 1 + 2 + ... +";
+let int = prompt();
+let intSplit = int.split(', ');  
+let arr = [];
+let result = 0;
 
-if (isFinite(int) && int > 0) {
-    if (int % 1 === 0) {
-        var summ = 0, index = 1;
+for (let i of intSplit) { arr.push(Number(i)); }
 
-        while (index <= int) {
-            summ += index;
-            index++;
-        }
-        
-        txtSumm += int + "=" + summ;
-        document.write("<b>S</b><sub>" + int + "<sub>" + txtSumm);
-    }
-    else document.write("Некорректный ввод!");
-}
-else document.write("Некорректный ввод!");
+arr.map((item) => result += item);
+
+document.write(`${result}: ${arr[0]} + ${arr[1]} + ... + ${arr.pop()}`);
 
 </script>

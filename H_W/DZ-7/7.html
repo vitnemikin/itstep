@@ -1,20 +1,25 @@
 <script text="text/javascript">
-// Отсортировать массив чисел по возрастанию (неубыванию) методом выборки. 30, 50, 20, 10, 40
+// Отсортировать массив чисел по возрастанию (неубыванию) методом выборки.
 
 let userInput = prompt('Введите массив:');
-let arr = userInput.split(', ');
-let min;
-let sort = [];
+let arr = userInput.split(',');
 
-// for (i = 0; i < arr.length; i++) {
-    // if (arr[i - 1] < arr[i]) min = arr[i];
-// }
+function SelectionSort (res) { 
+    let n = res.length;
 
-for (let i = 0; i <= arr.length; i++) {
-    if (arr[i] === Math.min.apply(null, arr)) {
-        sort.push(arr[i]);
-        arr.pop(arr[i]);
-    }
+    for (let i = 0; i <= n - 1; i++) { 
+        let min = i;
+        
+        for (let j = i + 1; j <= n; j++) if (res[j] < res[i]) min = j;  
+       
+        let sort = res[min]; 
+        res[min] = res[i]; 
+        res[i] = sort;
+    }                    
+    
+    return arr;
 }
+
+document.write(`Исходный массив: ${arr}<br> Сортировка: ${SelectionSort(arr)}`)
 
 </script>
