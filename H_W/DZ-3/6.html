@@ -1,0 +1,58 @@
+<script text="text/javascript">
+//  Запросить у пользователя число и на сколько цифр его сдвинуть. 
+//  Сдвинуть цифры числа и вывести результат (если число 123456 сдвинуть на 2 цифры, то получится 345612).
+
+var userInput = Number(prompt("Введите число:"));
+var userSign = Number(prompt("Сдвиг:"));
+var deleteSignStep1 = 10;
+var deleteSignStep2 = 10;
+
+  
+if (userSign === 0) {
+
+    alert(userInput);
+
+} else if (userSign < 0) {
+
+    alert(`Сдвинуть на -${userSign}!?`);
+
+} else {
+
+    for (let i = 1; i < String(userInput).length; i++) {
+        // console.log(deleteSignStep1);
+        deleteSignStep1 *= 10;
+    }
+
+    deleteSignStep1/100;
+
+    for (let j = 1; j <= userSign; j++) {
+        deleteSignStep1 /= 10;
+    }
+    
+    for (let step = 10; step / 10 < deleteSignStep1; step *= 10) { 
+        digit = userInput % step;
+
+        // console.log(`step ` + digit);
+    }
+
+    let preResult = deleteSignStep1;
+    preResult = ((userInput/preResult) - ((userInput%preResult)/preResult))/(deleteSignStep1 * 10); 
+
+    let result = (digit + preResult) * (deleteSignStep1 * 10); 
+
+    document.write('Результат: ');
+
+    for (let i = 0; i < String(result).length; i++) {
+        let finalResult = String(result).charAt(i);
+
+        if (finalResult === '0') {
+            continue;
+        } else document.write(finalResult) 
+    }
+}
+
+
+// console.log('delete ' + preResult);
+// console.log('result ' + result);
+
+</script>

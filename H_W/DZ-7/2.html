@@ -1,0 +1,17 @@
+<script text="text/javascript">
+// В массиве хранятся имена сотрудников, которым была выписана премия за месяц. 
+// Проверить, не попал ли кто-либо из сотрудников в эту базу дважды:
+// вывести эти имена в документ, а из массива все повторения удалить. 
+
+let userInput = prompt('Введите имена сотрудников через запятую');
+let data_base = userInput.split(', ');
+
+const duplicates = data_base.filter(function (item, pos) {
+    return data_base.indexOf(item) === pos;
+});
+
+document.write(`База данных: ${duplicates}`);
+
+// Проверка Yerden, Alan, Vitaliy, Vitaliy, Vitaliy, Vitaliy 
+
+</script>

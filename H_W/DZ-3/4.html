@@ -1,0 +1,27 @@
+<script text="text/javascript">
+//  Зациклить калькулятор. Запросить у пользователя 2 числа и знак, решить пример, вывести результат и спросить, хочет ли он решить еще один пример. 
+//  И так до тех пор, пока пользователь не откажется.
+
+do{
+    let userInput1 = Number(prompt("Input first number")),
+        userInput2 = Number(prompt("Input second number")),
+        userSign = prompt("Choose sign: 1. + | 2. - | 3. * | 4. /"),
+        plus = userInput1 + userInput2,
+        mines = userInput1 - userInput2,
+        Umnozhenie = userInput1 * userInput2,
+        Delenie = userInput1 / userInput2;
+        
+    if(isNaN(userInput1) || (isNaN(userInput2))){
+        alert(`It's not a number`); 
+    } else{
+        switch(userSign){
+            case '1': alert(plus); break;
+            case '2': alert(mines); break;
+            case '3': alert(Umnozhenie); break;
+            case '4': alert(Delenie); break;
+            default: alert(`Choose between "+-*/"`);
+        }
+    }
+} while(confirm(`Хотите ли вы решить еще один пример?`));
+
+</script>

@@ -1,0 +1,20 @@
+<script text="text/javascript">
+// Написать функцию, которая принимает длину и ширину прямоугольника 
+// и вычисляет его площадь. Если в функцию передали 1 параметр, 
+// то она вычисляет площадь квадрата.
+let squareRectangle, squareArea;
+let a = Number(prompt("Введите длину:"));
+let b = Number(prompt("Введите ширину:"));
+
+function square(){
+    if(b === 0){
+        squareArea = Math.pow(a, 2);
+        return squareArea;
+    } else{
+        squareRectangle = a * b;
+        return squareRectangle; 
+    }
+}
+
+alert(square());
+</script>

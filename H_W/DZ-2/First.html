@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="Sem1.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+//  Запросить у пользователя его возраст и определить, кем он является:
+//  ребенком (0-12), подростком (12-18), взрослым (18-60) или пенсионером (60++).
+
+let age = Number(prompt());
+
+if(age >= 1 && age < 12){
+    alert(`Ребенок`);
+} else if(age >= 12 && age < 18){
+    alert(`Подросток`);
+} else if(age >= 18 && age < 60){
+    alert(`Взрослый`);
+} else{
+    alert(`Пенсионер`);
+}
+</script>
+</body>
+</html>

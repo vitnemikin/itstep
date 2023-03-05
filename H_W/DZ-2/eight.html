@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="Sem1.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+//  Запросить у пользователя длину окружности и периметр квадрата. Определить, может ли такая окружность поместиться в указанный квадрат. 
+
+const pi = 3.14;
+var l = Number(prompt("Введите длину окружности:")),
+    P = Number(prompt("Введите периметр квадрата:")),
+    Radius = Math.floor(l/(pi*2)),
+    PopolamPerimetr = Math.floor(P/2); 
+
+if(Radius === PopolamPerimetr){
+    alert(`Заданная окружность может вписаться в квадрат`);
+} else{
+    alert(`Заданная окружность не впишется в квадрат`);
+}
+
+</script>
+</body>
+</html>

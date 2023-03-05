@@ -1,0 +1,31 @@
+<script text="text/javascript">
+// В массиве найти максимальную длину последовательности неубывающих чисел.
+
+let userInput = prompt('Введите массив:');
+let max = 0;
+let count = 1;
+
+function transformInMassive (arr = []) {
+    for (i of userInput) {
+        if (!isNaN(i)) arr.push(i); 
+    }
+
+    return arr;
+}
+
+let arr = transformInMassive();
+
+document.write(`Исходный массив: ${arr}<br>`);
+
+for (var i = 0; i <= arr.length - 1; i++) {
+    if (arr[i + 1] >= arr[i]) count++;
+    else {
+        if (count > max) max = count;
+        count = 1;
+    }
+
+}
+
+document.write(`Самая длинная неубывающая последовательность - из ${i} элементов: ${max}`);
+
+</script>

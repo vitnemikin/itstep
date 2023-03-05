@@ -1,0 +1,25 @@
+<script text="text/javascript">
+// Вывести элементы числового массива, которые больше, чем элементы, стоящие перед ними. 
+// Например, для массива [3, 9, 8, 4, 5, 1] следует вывести числа 9 и 5, 
+// так как перед ними стоят соответственно числа 3 и 4, которые меньше их.
+
+let userMass = prompt('Введите массив:');
+
+function transformInMassive(massive = []) {
+    for (i of userMass) { 
+        if (!isNaN(i)) massive.push(i); 
+    }
+
+    return massive;
+}
+
+function destructionElements(array = transformInMassive()) {    
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] >= array[i - 1]) document.write(array[i]);
+    }
+}
+
+document.write(`Введенный массив: ${transformInMassive()}.<br>`);         
+document.write(`${destructionElements()} - вывод.`);         
+
+</script>

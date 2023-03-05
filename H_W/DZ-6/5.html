@@ -1,0 +1,51 @@
+<script text="text/javascript">
+// В массиве найти минимальный и максимальный элементы, поменять их местами.
+
+let inputMass = prompt(`Введите массив`);
+
+function transformInMassive(massive = []) {
+    for (i of inputMass) {
+        if (!isNaN(i)) massive.push(i); 
+    }
+
+    return massive;
+}
+
+function min(massive = transformInMassive()) {
+    let minimum = massive[0];
+
+    for (let number of massive) {
+        if (number < minimum) minimum = number;
+    }
+
+    return minimum;
+}
+
+function max(massive = transformInMassive()) {
+    let maximum = massive[0];
+
+    for (let number of massive) {
+        if (number > maximum) maximum = number;
+    }
+
+    return maximum;
+}
+
+function changePosition(result, massive = transformInMassive()) {
+    for (let i = 0; i <= massive.length; i++) {
+        if (massive[i] === min()) {
+            massive[i] = max();
+        } else if (massive[i] === max()) {
+            massive[i] = min();
+        }
+    }
+
+    return result = massive;
+}
+
+document.write(`Min: ${min()}<br>`);
+document.write(`Max: ${max()}<br>`);
+document.write(`Введенные данные: ${transformInMassive()}<br>`);
+document.write(`Результат: ${changePosition()}`);
+
+</script>

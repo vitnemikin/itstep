@@ -1,0 +1,18 @@
+<script type="text/javascript">
+// Пользователь вводит число любой длины. Вывести сумму всех цифр в числе и их произведение.
+
+var userInput = Number(prompt(""));
+var summ = 0;
+var umnozhenie = 1;
+
+while(userInput !== 0){
+    let digit = userInput % 10;    
+    summ += digit;
+    umnozhenie *= digit;
+    userInput = parseInt(userInput/10);
+}   
+
+console.log(`Сумма: ` + summ);
+console.log(`Произведение: ` + umnozhenie);
+
+</script>

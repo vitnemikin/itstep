@@ -1,0 +1,39 @@
+<script text="text/javascript">
+// Синоптики фиксировали дневные температуры в течение месяца: номер индекса массива - номер дня.
+// Вывести в документ все локальные минимумы и максимумы температур в таком виде: "Максимумы: день 3 - 16о, день 7 - 25о, ...".
+// (Локальный максимум - значение, которое больше двух соседних, локальный минимум - меньше двух соседних)
+
+let month = prompt('Введите месяц цифрой от 1-12;');
+let local_max = [];
+let local_min = [];
+let day = [];
+
+switch (month) {
+    case '1': month = 31; break;
+    case '2': month = 28; break;
+    case '3': month = 31; break;
+    case '4': month = 30; break;
+    case '5': month = 31; break;
+    case '6': month = 30; break;
+    case '7': month = 31; break;
+    case '8': month = 31; break;
+    case '9': month = 30; break;
+    case '10': month = 31; break;
+    case '11': month = 30; break;
+    case '12': month = 31; break;
+    default: alert('Введите от 1 до 12!');
+}
+
+for (let i = 0; i < month; i++) {
+    let temperature = Math.floor(Math.random() * 250);
+    day.push(temperature);
+
+    document.write(`day ${i}: temperature: ${temperature}<br>`);
+    if (day[i - 1] < temperature || temperature > day[i + 1]) local_max.push(temperature);
+    if (temperature < day[i - 1] || day[i + 1] > temperature) local_min.push(temperature);
+}
+
+document.write(`Локальные максимумы: ${local_max}<br>`);
+document.write(`Локальные минимумы: ${local_min}`);
+
+</script>

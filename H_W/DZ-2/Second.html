@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="Sem1.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+//  Запросить у пользователя число от 0 до 9 и вывести ему спецсимвол, который расположен на этой клавише (1–!, 2–@, 3–# и т. д).
+
+let chislo = Number(prompt("Введите число от 0 до 9:"));
+
+switch(chislo){
+    case 0: alert(`)`); break;
+    case 1: alert(`!`); break;
+    case 2: alert(`@`); break;
+    case 3: alert(`#`); break;
+    case 4: alert(`$`); break;
+    case 5: alert(`%`); break;
+    case 6: alert(`^`); break;
+    case 7: alert(`&`); break;
+    case 8: alert(`*`); break;
+    case 9: alert(`(`); break;
+    default: alert(`Введите число от 0 до 9`);
+}
+
+alert(chislo);  
+</script>
+</body>
+</html>

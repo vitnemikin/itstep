@@ -1,0 +1,11 @@
+<script type="text/javascript">
+// Запросите у пользователя трехзначное число и выведите его задом наперед. 
+// Для решения задачи вам понадобится оператор % (остаток от деления):
+
+let Chislo = Number((prompt(""))),
+    flag0 = (Chislo%10),
+    flag1 = ((Chislo%100)/(10))-((Chislo%10)/(10)),
+    flag2 = (Chislo/100)-((Chislo%10)/(10));
+
+alert(flag0 + `` + Math.round(flag1) + `` + Math.round(flag2));
+</script>

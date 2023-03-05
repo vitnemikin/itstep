@@ -1,0 +1,30 @@
+<script text="text/javascript">
+//  Запросить у пользователя число и вывести наибольшую цифру из этого числа и наименьшую.
+
+var userInput = Number(prompt(""));
+
+if(isNaN(userInput)){
+    alert(`It's not a number`);
+} else{
+    let userNumber = Number(userInput);
+    if(!Number.isInteger(userNumber)){
+        alert(`It's not an integer number!`);
+    } else{
+        let max = 0,
+            min = 9;
+        while (userNumber > 0){ 
+            if (userNumber % 10 < min){
+                min = userNumber % 10;
+            }
+
+            if (userNumber % 10 > max){
+                max = userNumber % 10;
+            }
+            userNumber = Math.floor(userNumber/10);
+        }
+        console.log(`Min element: ` + min);
+        console.log(`Max element: ` + max);
+    }
+}
+
+</script>

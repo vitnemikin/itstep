@@ -1,0 +1,30 @@
+<script text="text/javascript">
+//  Числа Фибоначчи – это элементы числовой последовательности 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …, 
+//  в которой каждое последующее число равно сумме двух предыдущих. Запросите у пользователя число N и выведите ряд из  N чисел Фибоначчи.
+
+var userInput = Number(prompt("Введите число N:"));
+
+if(isNaN(userInput)){
+    alert(`It's not a number`);
+} else{
+    let userNumber = Number(userInput);
+    if(!Number.isInteger(userNumber)){
+        alert(`It's not an integer number!`);
+    } else{
+        let N1 = 0,
+            N2 = 1,
+            formula;
+
+        console.log(N1);
+        console.log(N2);
+
+        for (let i = 2; i < userNumber; i++) {
+            formula = N1 + N2;
+            N1 = N2;
+            N2 = formula;
+            console.log(formula);
+        }
+    }
+}
+
+</script>

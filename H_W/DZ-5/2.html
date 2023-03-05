@@ -1,0 +1,18 @@
+<script text="text/javascript">
+// Написать функцию, которая принимает три отдельные цифры и 
+// превращает их в одно число. 
+// Например: цифры 1, 4, 9 превратятся в число 149.
+
+function transf(num1 = Number(prompt("Введите первое число:")), 
+                num2 = Number(prompt("Введите второе число:")), 
+                num3 = Number(prompt("Введите третье число:"))){
+    num1 *= 100;
+    num2 *= 10;
+    
+    let result = num1 + num2 + num3;
+    return result;
+}
+
+alert(transf());
+
+</script>

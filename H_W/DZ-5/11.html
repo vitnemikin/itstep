@@ -1,0 +1,90 @@
+<script text="text/javascript">
+// Написать функцию, которая считает разницу между датами. 
+// Функция принимает 6 параметров, которые описывают 2 даты, и 
+// возвращает результат в виде строки «чч:мм:сс». 
+// При выполнении задания используйте функции из предыдущих 2-х заданий: 
+// сначала обе даты переведите в секунды, узнайте разницу в секундах, а потом разницу 
+// переведите обратно в «чч:мм:сс».
+
+var hour1 = Number(prompt("Введите для первого параметра, час:"));
+var minutes1 = Number(prompt("Введите для первого параметра, минут:"));
+var seconds1 = Number(prompt("Введите для первого параметра, секунд:"));
+
+var hour2 = Number(prompt("Введите для второго параметра, час:"));
+var minutes2 = Number(prompt("Введите для второго параметра, минут:"));
+var seconds2 = Number(prompt("Введите для второго параметра, секунд:"));
+
+function time(){
+    if((hour1 < 0 || minutes1 < 0 || seconds1 < 0) && (hour2 < 0 || minute2 < 0 || seconds2 < 0)){
+        alert("Нифига ты умный");
+    } else{ 
+        if(hour1 > 99 && hour2 > 99){
+            alert(`Введите цифру от 0 до 99`);
+        } else{
+            hour1 = hour1 * 3600;
+            hour2 = hour2 * 3600;
+        }
+
+        if((minutes1 > 59 || seconds1 > 59) && (minutes2 > 59 || seconds2 > 59)){
+            alert(`Введите цифру от 0 до 59`);
+        } else{
+            minutes1 = minutes1 * 60;
+            minutes2 = minutes2 * 60;
+        }
+
+        let result1 = hour1 + minutes1 + seconds1;
+        let result2 = hour2 + minutes2 + seconds2;
+        let finalResult = result1 - result2;
+        
+        return finalResult;
+    }
+}
+
+function timeReverse(reversing = time()){
+    let hour = Math.floor(reversing / 3600);
+    let minutes = Math.floor(reversing / 60) % 60;
+    let seconds = reversing % 60;
+
+    if(hour === 0){
+        hour = `00:`;
+    } else if(hour > 0 && hour < 10){
+        hour = `0` + hour + `:`;
+    } else{
+        if(hour > 99){
+            alert(`Слишкоом много секунд вы выбрали, сэр...`);
+        } else{
+            hour = hour + `:`; 
+        } 
+    }
+
+    if(minutes === 0){
+        minutes = `00:`;
+    } else if(minutes > 0 && minutes < 10){
+        minutes = `0` + minutes + `:`;        
+    } else{
+        if(minutes >= 59){
+            minutes = 59;
+        } else{
+            minutes = minutes + `:`;
+        }
+    }
+
+    if(seconds === 0){
+        seconds = `00`;
+    } else if(seconds > 0 && seconds < 10){
+        seconds = `0` + seconds;
+    } else{
+        if(seconds >= 59){
+            seconds = 59;
+        } else{
+            seconds = seconds;
+        }
+    }
+
+    let ultraFinalResult = hour + minutes + seconds;
+    return ultraFinalResult;
+}
+
+alert(timeReverse());
+
+</script>

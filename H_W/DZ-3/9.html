@@ -1,0 +1,26 @@
+<script text="text/javascript">
+//  Гипотеза Сиракуз. Возьмем любое натуральное число. Если оно четное – разделим его пополам, если нечетное – умножим на 3, прибавим 1 и разделим пополам. 
+//  Повторим эти действия с вновь полученным числом. Гипотеза гласит, что независимо от выбора первого числа рано или поздно мы получим 1.  
+//  Запросите у пользователя число и проверьте гипотезу для этого числа. Вывести все значения, которые получаются на каждой итерации.
+
+var userInput = Number(prompt("Input a number"));
+
+if(isNaN(userInput)){
+    alert(`It's not a number`);
+} else{
+    let userNumber = Number(userInput);
+    if(!Number.isInteger(userNumber)){
+        alert(`It's not an integer number!`);
+    } else{
+        while(userNumber != 1){
+            if(userNumber%2 === 0){
+                userNumber = userNumber/2;
+            } else{
+                userNumber = (((userNumber*3)+1)/2);
+            }            
+            console.log(userNumber);
+        }
+    }
+}
+
+</script>

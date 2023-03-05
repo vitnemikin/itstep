@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="Sem1.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+// Запросить у пользователя трехзначное и число и проверить, есть ли в нем одинаковые цифры. 
+
+let chislo = Number(prompt("Имеются ли одинаковые цирфы?"));             
+    first = Math.round((chislo/100)-((chislo%10)/(10))),                 // <- Получаем из трехзначного числа только первый элемент.
+    second = Math.round(((chislo%100)/(10))-((chislo%10)/(10))),         // <- Получаем из трехзначного числа, только второй элемент.
+    third = (chislo%10);                                                 // <- Получаем из трехзначного числа, только третий элемент.
+
+if(Number.isInteger(chislo) === false && (chislo <= 99 || chislo > 1000)){                                      
+    alert(`Введи нормальные цифорки!`);
+} else if(first == second || first == third || second == first || second == third){
+    alert(`Есть совпадения`);
+} else{
+    alert(`Нет совпадений`);
+} 
+</script>
+</body>
+</html>

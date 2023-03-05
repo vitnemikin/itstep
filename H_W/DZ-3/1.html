@@ -1,0 +1,21 @@
+<script text="text/javascript">
+//  Запросить у пользователя число и вывести все делители этого числа.
+
+var userInput = Number(prompt(""));
+
+if(isNaN(userInput)){
+    alert(`It's not a number`);
+} else{
+    let userNumber = Number(userInput);
+    if(!Number.isInteger(userNumber)){
+        alert(`It's not an integer number!`);
+    } else{
+        for (let i = 1; i <= userNumber; i++){
+            if (userNumber % i === 0 && userNumber === userNumber){
+                console.log(i);
+            }
+        }
+    }
+}
+
+</script>

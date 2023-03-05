@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="Sem1.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+//  Задать пользователю 3 вопроса, в каждом вопросе по 3 варианта ответа. 
+//  За каждый правильный ответ начисляется 2 балла. После вопросов выведите пользователю количество набранных баллов.
+
+let firstQs = Number(prompt("Сколько месяцев в году имеет 28 дней? Выберите вариант ответа:  1. Один | 2. Два | 3. Двеннадцать"));
+let secondQs = Number(prompt("Уличный термометр показывает 15 градусов. Сколько градусов покажут два таких термометра? Выберите вариант ответа: 1. Пятнадцать | 2. Тридцать | 3. Ноль"));
+let thirdQs = Number(prompt("Какие часы показывают правильное время только два раза в сутки? Выберите варианте ответа: 1. Песочные | 2. Сломанные | 3. Солнечные"));
+let firstAnswer = 0;
+let secondAnswer = 0;
+let thirdAnswer = 0;
+
+if (isNaN(firstQs) || isNaN(secondQs) || isNaN(thirdAnswer)) {
+    alert('Выберите вариант ответа от 1-3');
+} else {
+
+    if(firstQs === 3){
+        firstAnswer = 2;
+    } else{
+        firstAnswer = 0;
+    }
+
+    if(secondQs === 1){
+        secondAnswer = 2;
+    } else{
+        secondAnswer = 0;
+    }
+
+    if(thirdQs === 2){
+        thirdAnswer = 2;
+    } else{
+        thirdAnswer = 0;
+    }
+
+    if(firstQs <= 0 || firstQs >= 4 || secondQs <= 0 || secondQs >= 4 || thirdQs <=0 || thirdQs >= 4){ 
+        alert(`Укажите ответ от 1 до 3`);
+    } else{
+        let final = firstAnswer + secondAnswer + thirdAnswer;
+        alert(`Ваше количество баллов: ` + final);
+    }
+
+}
+
+</script>
+</body>
+</html>

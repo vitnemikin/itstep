@@ -1,0 +1,40 @@
+<script text="text/javascript">
+// Создать два массива. Удалить из первого массива такие элементы, которые есть во втором массиве.
+
+let inputMass1 = prompt('Введите массив:');
+let inputMass2 = prompt('Введите массив:');
+let massive1 = [];
+let massive2 = [];
+
+for (i of inputMass1) { 
+    if (!isNaN(i)) massive1.push(i); 
+}
+
+for (j of inputMass2) { 
+    if (!isNaN(j)) massive2.push(j); 
+}
+
+function comparasionElements() {
+
+    let result = [];
+    
+    if (massive1 <= 0 && massive2 <= 0) return result = 'введите данные снова.';
+
+    for (let i = 0; i < massive1.length; i++) {
+        let flag = false;
+
+        for (let j = 0; j < massive2.length; j++) {
+            if (massive1[i] === massive2[j]) flag = true;
+        }
+
+        if (!flag) result.push(massive1[i]);
+    }
+    
+    return result;
+}
+
+document.write(`Исходный массив: ${massive1}<br>`);
+document.write(`Результат: ${comparasionElements()}<br>`);
+document.write(`Второй массив: ${massive2}`);
+
+</script>

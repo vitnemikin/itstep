@@ -1,0 +1,53 @@
+<script text="text/javascript">
+// Создать массив из 10 чисел, используя только один prompt. 
+// Если пользователь ввёл больше 10 элементов, удалить лишнее. 
+// Если меньше - сообщить ему об этом и попросить ввести данные снова. 
+// Сохранить во второй массив только те значения первого массива, которые являются четными.
+
+let inputMass = prompt('Введите массив:');
+let massive = [];
+let error = 'введите данные снова.';
+
+for (i of inputMass) { 
+    if (!isNaN(i)) massive.push(i); 
+}
+
+// Проверка значений...
+
+function tests_() {
+    
+    if (massive.length > 10) {
+        for (let i = 0; massive.length !== 10; i++) {
+            massive.pop();
+        }
+
+        return massive;
+
+    } else if (massive.length < 10) {
+        return error;   
+    } else {
+        return massive;
+    }
+}
+
+// Сравнение...
+
+function secondMassive(massive = tests_()) {
+    let result = [];
+
+    if (tests_() === error) return 'введите данные снова'; 
+
+    for (let i = 0; i < massive.length; i++) {
+        let flag = false;
+
+        if (massive[i] % 2) flag = true;
+        if (!flag) result.push(massive[i]);
+    }
+    
+    return result;
+}
+
+document.write(`Исходный массив: ${massive}<br>`);
+document.write(`Результат: ${secondMassive()}`);
+
+</script>

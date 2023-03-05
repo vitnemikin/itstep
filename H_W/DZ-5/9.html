@@ -1,0 +1,31 @@
+<script text="text/javascript">
+// Написать функцию, которая принимает часы, минуты и секунды и
+// возвращает это время в секундах.
+
+function time(hour, minutes, seconds){
+    hour = Number(prompt("Введите час:"));
+    minutes = Number(prompt("Введите минут:"));
+    seconds = Number(prompt("Введите секунд:"));
+
+    if(hour < 0 || minutes < 0 || seconds < 0){
+        alert("Нифига ты умный");
+    } else{ 
+        if(hour > 99){
+            alert(`Введите цифру от 0 до 99`);
+        } else{
+            hour = hour * 3600;
+        }
+
+        if(minutes > 59 || seconds > 59){
+            alert(`Введите цифру от 0 до 59`);
+        } else{
+            minutes = minutes * 60;
+        }
+
+        let result = hour + minutes + seconds;
+        return alert(result);
+    }
+}
+
+time();
+</script>

@@ -1,0 +1,24 @@
+<script text="text/javascript">
+// Пользователь вводит массив чисел userArray. 
+// Cформировать массив resultArray по правилу: resultArray[i] = userArray[1] + userArray[2] + ... + userArray[i].
+
+var int = prompt("Сумма каких первых чисел надо вставить?");
+var txtSumm = "= 1 + 2 + ... +";
+
+if (isFinite(int) && int > 0) {
+    if (int % 1 === 0) {
+        var summ = 0, index = 1;
+
+        while (index <= int) {
+            summ += index;
+            index++;
+        }
+        
+        txtSumm += int + "=" + summ;
+        document.write("<b>S</b><sub>" + int + "<sub>" + txtSumm);
+    }
+    else document.write("Некорректный ввод!");
+}
+else document.write("Некорректный ввод!");
+
+</script>

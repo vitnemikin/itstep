@@ -1,0 +1,30 @@
+<script text="text/javascript">
+// Написать функцию, которая принимает минимальное и максимальное значения для диапазона, 
+// и выводит только те числа из диапазона, которые являются совершенными. 
+// Используйте написанную ранее функцию, чтобы узнавать, совершенное число или нет.
+
+function perfectNum(num){
+    let summ = 0;
+
+    for (let i = 1; i <= num / 2; i++){
+        if (num % i === 0){
+            summ += i;
+        }
+    }
+
+    if(summ === num && summ != 0){
+        return `В заданном диапазоне есть совершенное число, это: ${num}.`;
+    } 
+}
+
+function rangePerfectNum(min, max){
+    min = Number(prompt("Укажите минимальное значение диапазона"));
+    max = Number(prompt("Укажите максимальное значение диапазона"));
+
+    for(; (min <= max); min++){
+        if(min === perfectNum(min));
+    }
+}
+
+rangePerfectNum();
+</script>

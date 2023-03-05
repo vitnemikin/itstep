@@ -1,0 +1,65 @@
+<script text="text/javascript">
+// Элементы массива содежит фамилии и имена сотрудников в виде строк: 
+// ["Фамилия1 Имя1", "Фамилия2 Имя2", ...]. 
+// Найти и вывести в документ всех однофамильцев.
+
+let userInput = prompt('Введите Ф.И сотрудников через запятую');
+let data_base = userInput.split(', ');
+let stack = [];
+
+// Вытаскиваем из базы данных все фамилии...
+
+for (let i = 0; i < data_base.length; i++) {
+    for (const surname of data_base[i]) {
+        if (surname === ' ') break;
+        else stack.push(surname);
+    }
+
+    stack.push(',');
+}
+
+let stack_update = stack.join('');
+data_base_update = stack_update.split(',');
+
+// Проверяем фамилии на дупликаты и вытаскиваем их...
+
+const duplicates = data_base_update.filter((word, index) => {
+    return word.indexOf(word) !== index;
+});
+
+duplicates.pop();
+
+// Сравниваем дупликаты с базой данных...
+
+function comparasionElements () {
+    let result = [];
+
+    for (let i = 0; i < data_base.length; i++) {
+        let flag = false;
+
+        for (let j = 0; j < duplicates.length; j++) {
+            if (data_base[i] === duplicates[j]) flag = true;
+        }
+
+        if (!flag) result.push(data_base[i]);
+    }
+    
+    result.pop();
+    return result;
+}
+
+function test () {
+    let error;
+
+    console.assert(data_base === '', {data_base: comparasionElements(), error: 'Test 1 failed'});
+    console.assert(typeof data_base === 'number', {data_base: comparasionElements(), error: 'Test 2 failed'});
+}
+
+// console.log(duplicates);
+console.log(comparasionElements());
+console.log(test());
+
+
+// Пример для проверки: Mangibayev Yerden, Nemikin Alan, Nemikin Vitaliy 
+
+</script>

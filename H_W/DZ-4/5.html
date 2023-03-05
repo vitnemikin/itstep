@@ -1,0 +1,35 @@
+<script text="text/javascxript">
+// Резюме. Спросите у пользователя его ФИО. Затем в цикле спрашивайте, в каком году он начал работать, 
+// в каком году уволился, и как называлось это место работы. Если пользователь не ввёл ничего, прервите цикл, 
+// и напечатайте в браузере его резюме, а в конце укажите, сколько лет составляет его общий стаж работы.
+
+var fullName = prompt("Введите свое ФИО:");
+var work = Number(prompt("Введите год начала"));
+var endWork = Number(prompt("Введите год окончания"));
+var nameWork = prompt("Название компании");
+
+// Честно говоря не понимаю зачем здесь нужны циклы.
+
+if(isNaN(work) || isNaN(endWork)){
+    alert(`Введите числовое значение!`);
+} else if(work > 2023 || endWork > 2023){
+    alert(`О, вы из будущего?!`)
+} else{
+    let workExperience = endWork - work;
+
+    if(work === 0 || endWork === 0 || nameWork === 0 || fullName === 0){
+        document.write(`<b>Резюме.</b>` + `<br>`);
+        document.write(`ФИО: не указано.` + `<br>`);
+        document.write(`Место работы: не указано.` + `<br>`);
+        document.write(`Стаж работы: не указано.`);
+    } else if(workExperience <= -1){
+        document.write(`Вы работали` + ` ` + workExperience + " лет!?");
+    } else{
+        document.write(`<b>Резюме.</b>` + `<br>`);
+        document.write(`ФИО: ` + fullName + `.<br>`);
+        document.write(`Место работы: ` + nameWork +`.<br>`);
+        document.write(`Стаж работы: ` + workExperience + ` лет.`);
+    }
+}
+
+</script>

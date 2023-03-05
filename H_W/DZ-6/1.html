@@ -1,0 +1,38 @@
+<script text="text/javascript">
+// Заполнить массив из 5 чисел при помощи prompt. Вывести массив, сумму значений и среднее значение массива.
+
+let inputNumber = prompt("Введите массив:");
+
+// Превращаем в массив промпт
+
+function transformInMassive(resultArray = []){
+    for (i of inputNumber) { 
+        if(!isNaN(i)) resultArray.push(i); 
+    }
+
+    return resultArray;
+}
+
+// Находим сумму всех элементов массива
+
+function arraySum(sum = 0){
+    let massiveSum = transformInMassive();
+
+    for (let i = 0; i < massiveSum.length; i++) {
+        sum += Number(massiveSum[i]);
+    }
+
+    return sum;
+}
+
+// Находим среднюю арифметическую
+
+function arithmeticMean(velikiyMath){
+    return velikiyMath = arraySum()/(transformInMassive().length);
+}
+
+// console.log(transformInMassive());
+// console.log(arraySum());
+console.log(arithmeticMean());
+
+</script>

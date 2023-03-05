@@ -1,0 +1,42 @@
+<script text="text/javascript">
+// Создать 2 массива из 7 чисел. 
+// Сравнить значения в массиве по очереди (0-й элемент первого массива с 0-м элементом второго и т.д.) 
+// и выводить информацию в документ.
+
+let inputMass1 = prompt('Введите массив:');
+let inputMass2 = prompt('Введите массив:');
+let massive1 = [];
+let massive2 = [];
+
+for (i of inputMass1) { 
+    if (!isNaN(i)) massive1.push(i); 
+}
+
+for (j of inputMass2) { 
+    if (!isNaN(j)) massive2.push(j); 
+}
+
+function comparasionElements() {
+
+    let result = [];
+    
+    if (massive1 <= 0 && massive2 <= 0) return result = 'введите данные снова.';
+
+    for (let i = 0; i < massive1.length; i++) {
+        let flag = true;
+
+        for (let j = 0; j < massive2.length; j++) {
+            if (massive1[i] === massive2[j]) flag = false;
+        }
+
+        if (!flag) result.push(massive1[i]);
+    }
+    
+    return result;
+}
+
+document.write(`Первый массив: ${massive1}<br>`);
+document.write(`Второй массив: ${massive2}<br>`);
+document.write(`Одинаковые элементы: ${comparasionElements()}`);
+
+</script>

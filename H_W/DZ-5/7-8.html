@@ -1,0 +1,45 @@
+<script text="text/javascript">
+// Написать функцию, которая принимает время (часы, минуты, секунды) 
+// и выводит его на экран в формате «чч:мм:сс». 
+
+function time(hour, minutes, seconds){
+    hour = Number(prompt("Введите час:"));
+    minutes = Number(prompt("Введите минут:"));
+    seconds = Number(prompt("Введите секунд:"));
+
+    if(hour < 0 || minutes < 0 || seconds < 0){
+        alert("Нифига ты умный");
+    } else{ 
+        if(hour > 99){
+            alert(`Введите цифру от 0 до 99`);
+        } else{
+            if(hour === 0){
+                hour = `00:`;
+            } else if(hour > 0 && hour < 10){
+                hour = '0' + hour + `:`;
+            } else{
+                hour = hour + `:`;
+            }
+        } 
+
+        let minutesSeconds;
+
+        if(minutes > 59 || seconds > 59){
+            alert(`Введите цифру от 0 до 59`);
+        } else{
+            if(minutes === 0 || seconds === 0){
+                minutesSeconds = `00:00`;
+            } else if((minutes > 0 && minutes < 10) || (seconds > 0 && seconds < 10)){
+                minutesSeconds = `0${minutes}:${hour}`;
+            } else{
+                minutesSeconds = minutes + `:` + seconds;
+            }
+        } 
+
+        result = `«${hour}${minutesSeconds}»`; 
+        return alert(result);
+    }
+}
+
+time();
+</script>

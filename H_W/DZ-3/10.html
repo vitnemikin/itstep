@@ -1,0 +1,25 @@
+<script text="text/javascript">
+//  Запросите у пользователя число. Найдите и выведите все комбинации из трёх чисел, которые в сумме дают это число.
+
+var userInput = Number(prompt("Enter a number:"));
+
+if(isNaN(userInput)){
+    alert(`It's not a number`);
+} else{
+    let userNumber = Number(userInput);
+    if(!Number.isInteger(userNumber)){
+        alert(`It's not an integer number!`);
+    } else{
+        for (let i = 1; i < userNumber; i++) {
+            for (let j = i + 1; j < userNumber; j++) {
+                for (let k = j + 1; k < userNumber; k++) {
+                    if (i + j + k === userNumber) {
+                        console.log(i + " + " + j + " + " + k + " = " + userNumber);
+                    }
+                }
+            }
+        }
+    }
+}
+
+</script>
