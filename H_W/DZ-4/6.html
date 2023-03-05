@@ -4,5 +4,29 @@
 // Считаем, что проценты начисляются каждый месяц. Рассчитать и вывести ежемесячный платёж по кредиту(с учётом процентов), 
 // размер последнего платежа и общую сумму переплаты за кредит.
    
+let cost = +prompt("Введите стоимость квартиры: ");
+let interestRate = +prompt("Введите процентную ставку банка: ");
+let term = +prompt("Введите количество лет за которое вы хотите выплатить ипотеку:");
+
+let months = term * 12;
+let interest = interestRate / 100 / 12;
+let monthlyPayment = cost * (interest + interest / (((1 + interest) ** months) - 1));
+let totalInterest = (monthlyPayment * months) - cost;
+
+let lastPayment = monthlyPayment + (cost - monthlyPayment * (months - 1)) * interest;
+
+document.write(`Месячная оплата с этой ставкой: ${monthlyPayment.toFixed(2)} <br>`);
+document.write(`Сумма последнего платежа: ${lastPayment.toFixed(2)} <br>`);
+document.write(`Общая сумма переплаты: ${totalInterest.toFixed(2)} <br>`);
+
+for (let i = 1; i <= months; i++) {
+    let interestPayment = cost * interest;
+    cost -= monthlyPayment - interestPayment;
+    if (i === months) {
+        document.write(`Сумма платежа #${i} это: ${(monthlyPayment + interestPayment).toFixed(2)} <br>`);
+    } else {
+        document.write(`Сумма платежа #${i} это: ${monthlyPayment.toFixed(2)} <br>`);
+    }
+}
 
 </script>

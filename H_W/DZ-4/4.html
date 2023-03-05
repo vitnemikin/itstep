@@ -2,11 +2,13 @@
 // Билет считается счастливым, если в его номере сумма первой половины цифр равна сумме второй половины цифр.
 // Пользователь вводит номер билета любой длины. Проверьте, счастливый ли это билет.
 
-var userInput = Number(prompt("Введите билет:"));
+var userInput = Number(prompt("Введите билет (Длина номера должна быть четной)"));
 var summ = 0, summ1 = 0;
 
 if(isNaN(userInput)){
     alert(`Вы ввели не число!`);
+} else if((String(userInput).length + 1) % 2 === 0){
+    alert(`Введите длину номер четной!`);
 } else{
     let userInput1 = userInput;
 
@@ -16,12 +18,12 @@ if(isNaN(userInput)){
         summ += userInput % 10;
         userInput = parseInt(userInput/10);
         
-        if(j < Math.round((String(userInput).length / 2) + 1)) summ -= summ;
+        if(j < ((String(userInput).length / 2)+1)) summ -= summ;
     }
 
     // Находим сумму второй половины цифр.
 
-    for(let i = 0; i < Math.round((String(userInput1).length)/2); i++){
+    for(let i = 0; i <= ((String(userInput1).length)/2); i++){
         summ1 += userInput1 % 10;
         userInput1 = parseInt(userInput1/10);        
     }
@@ -29,11 +31,12 @@ if(isNaN(userInput)){
     console.log(summ);
     console.log(summ1);
 
-    // if(summ === summ1){
-    //     alert(`Это счастливый билет! Ухуууу`);
-    // } else{
-    //     alert(`В следующий раз обязательно повезет!`);
-    // }
+    if(summ === summ1){
+        alert(`Это счастливый билет! Ухуууу`);
+    } else{
+        alert(`В следующий раз обязательно повезет!`);
+    }
 }
+
 
 </script>

@@ -11,7 +11,7 @@ let sort = [];
 // }
 
 for (let i = 0; i <= arr.length; i++) {
-    if (arr[i] === Math.min.apply(null, arr[i])) {
+    if (arr[i] === Math.min.apply(null, arr)) {
         sort.push(arr[i]);
         arr.pop(arr[i]);
     }
