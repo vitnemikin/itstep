@@ -1,0 +1,39 @@
+<script>
+
+let str = '5 3 2 * +';
+	
+function polka(str) {
+    let string = str.split(" ");
+    let stack = [];
+
+	for (let i = 0; i < string.length; i++) {
+		if (string[i] == "+"){
+			let b = stack.pop();
+			let a = stack.pop();
+			stack.push(a + b);
+        }
+		else if (string[i] == '-') {
+            let b = stack.pop();
+            let a = stack.pop();
+            stack.push(a - b);
+        } 
+        else if (string[i] == '*') {
+            let b = stack.pop();
+            let a = stack.pop();
+            stack.push(a * b);
+        } 
+        else if (string[i] == '/') {
+            let b = stack.pop();
+            let a = stack.pop();
+            stack.push(a / b);
+        
+        } else stack.push(Number(string[i]));
+	}
+
+    return stack.pop();
+}
+
+console.log(str);
+console.log(polka(str));
+
+</script>

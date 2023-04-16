@@ -1,0 +1,55 @@
+<script text="text/javascript">
+
+function sumCols (arr) {
+    let rowSum = [];
+    let colSum = [];
+
+    // Сумма строк и столбцов
+    for (let i = 0; i < arr.length; i++) {
+        rowSum[i] = 0;
+        
+        for (let j = 0; j < arr[i].length; j++) {
+            rowSum[i] += arr[i][j];
+            colSum[j] = (colSum[j] || 0) + arr[i][j];
+        }
+    }
+
+    let count1 = 0; // Главная
+    let count2 = 0; // Побочка
+ 
+    // Сумма главной диагонали и побочной диагонали
+    for (let i = 0; i < arr.length; i++) {
+        // Сумма главной диагонали
+        count1 += arr[i][i];     
+    
+        // Сумма побочной диагонали
+        count2 += arr[i][arr.length-1-i];
+    }
+
+    // Проверяем являются ли все элементы строк равны друг другу
+    let check1 = rowSum.every( currVal => {
+        if (currVal === rowSum[0]) return true;
+        else return false;
+    });
+
+    // Проверяем являются ли все элементы столбцов равны друг другу
+    let check2 = colSum.every( currVal => {
+        if (currVal === colSum[0]) return true;
+        else return false;
+    });
+
+    // Вывод...
+    if (check1 === true && check2 === true) {
+        if (count1 === rowSum[0] && count2 === colSum[0]) return 'Magic matrix';
+    } else return 'No Magic(;';
+}
+
+let arr = [
+    [1,1],
+    [1,1]
+];
+
+console.log(arr);
+console.log(sumCols(arr));
+
+</script>

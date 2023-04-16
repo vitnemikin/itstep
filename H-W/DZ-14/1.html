@@ -1,0 +1,116 @@
+<script>
+alert('Следующие данные заполнять через запятую, например: 100,60,30...');
+let A = prompt('Введите количество видов продукции:'); 
+let B = prompt('Введите количество типов сырья:'); 
+let C = prompt('Введите план выпуска продукции:'); 
+
+class Matrix {
+    constructor (A, B, C) {
+        this.A = A.split(',').map(Number);
+        this.B = B.split(',').map(Number);
+        this.C = C.split(',').map(Number);
+
+        // Превращаем массив A в двумерный массив...
+        let arr1 = [];
+        let arr2 = [];
+        let matrix = [];
+
+        for (let index of this.A) {
+            if (index <= Math.floor(this.A.length / 2)) arr1.push(index);
+            else arr2.push(index);
+        }
+        
+        matrix.push(arr1);
+        matrix.push(arr2);
+
+        // Транспонируем матрицу A...
+        let m = matrix.length;
+        let n = matrix[0].length;
+        var AT = [];
+
+        for (let i = 0; i < n; i++) { 
+            AT[i] = [];
+            for (let j = 0; j < m; j++) AT[i][j] = matrix[j][i];
+        }
+
+        // Транспонируем массив B...
+        var BT = [];
+
+        for (let i = 0; i < this.B.length; i++) {
+            BT[i] = [];
+
+            for (let j = 0; j < this.B.length; j++) {
+                if (BT[i].length > 0) continue;
+                BT[i][j] = this.B[i];
+            }
+        }
+
+        this.A = AT;
+        this.B = BT;
+    }
+
+    res (value) {
+        // Умножение A и B
+        let rowsA = this.A.length
+            , colsA = this.A[0].length
+            , rowsB = this.B.length
+            , colsB = this.B[0].length
+            , Z = [];
+
+        if (colsA != rowsB) return false;
+
+        for (let i = 0; i < rowsA; i++) Z[i] = [];
+        
+        for (let k = 0; k < colsB; k++) {
+            for (let i = 0; i < rowsA; i++) {
+                let preRes = 0;
+                
+                for (let j = 0; j < rowsB; j++) preRes += this.A[i][j] * this.B[j][k];
+                Z[i][k] = preRes;
+            }
+        }
+
+        // Финальный результат Z*C...
+        let P = [];
+    
+        if (Z.length != this.C.length) return false;
+
+        for (let i = 0; i < Z.length; i++) P[i] = [];
+        
+        for (let k = 0; k < this.C.length; k++) {
+            for (let i = 0; i < Z.length; i++) {
+                let preRes = 0;
+                let j = 0;
+     
+                preRes += Z[i][j] * this.C[k];
+                // console.log(preRes)
+    
+                P[i][j] = preRes;
+                j++;
+                k++;
+            }
+        }
+        
+        // Сумма всех элементов P...
+        let res = 0;
+
+        for (let i = 0; i < P.length; i++) {
+            for (let j = 0; i < P[i]; i++) {
+                res += P[i][j];
+            }
+        }
+
+        document.write(`
+        Введеное количество видов продукции: ${this.A}<br> 
+        Введеное количество типов сырья: ${this.B}<br>
+        Введеный план выпуска продукции: ${this.C}<br>
+        Z стоимость затрат сырья: ${Z}<br>
+        Общая стоимость ссырья: ${res}
+        `);
+    }
+}
+
+let result = new Matrix (A, B, C);
+result.res();
+
+</script>

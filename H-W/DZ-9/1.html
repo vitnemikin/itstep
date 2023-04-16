@@ -1,0 +1,24 @@
+<script>
+
+let arr = [2,2,3,5,3,6,7,9,0];
+let res = [];
+
+for (let digit of arr) {
+    switch (digit) {
+        case 1: res.push('!'); break; 
+        case 2: res.push('@'); break;
+        case 3: res.push('#'); break;
+        case 4: res.push('$'); break;
+        case 5: res.push('%'); break;
+        case 6: res.push('^'); break;
+        case 7: res.push('&'); break;
+        case 8: res.push('*'); break;
+        case 9: res.push('('); break;
+        case 0: res.push(')'); break;
+    }
+}
+
+console.log(arr);
+console.log(res);
+
+</script>

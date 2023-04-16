@@ -1,0 +1,131 @@
+<script>
+class Animal {
+    constructor (name, weight, size) {
+        this.name = name;
+        this.weight = weight;
+        this.size = size;
+    }
+    
+    talk () { alert("what's up nigga"); }
+
+    eat (meal) {
+        this.size += meal.length;
+        this.weight += meal.length;
+    }
+}
+
+class Herbivore extends Animal {
+    constructor(name, weight, size, ratio){
+        super (name, weight, size);
+        this.ratio = ratio;
+    }
+
+    eat (meal) {
+        if (this.ratio.includes(meal)) {
+            this.size += meal.length;
+            this.weight += meal.length;
+            
+            alert(`${this.name} покушал ${meal}`);
+        } else {
+            alert(`${this.name} не могу покушать ${meal}`);
+        }
+    }
+}
+
+
+class Predator extends Animal {
+    constructor (name, weight, size) {
+        super (name, weight, size);
+        
+        // Тут будут храниться съеденные бедняги
+        this.stomach = []; 
+    }
+
+    eat (meal){
+        if (meal instanceof Animal && meal.weight < this.weight) {
+            if (meal.size < this.size && !this.stomach.includes(meal)) {
+                if (!meal.run) {
+                    this.stomach.push(meal); 
+                    this.size = this.size + meal.size * 0.2;
+                    this.weight = this.weight + meal.weight * 0.2;
+
+                    alert(`Бычара ${this.name} скушал ${meal.name}! Анализ: вес - ${this.weight}, размер - ${this.size}!`);
+                }
+            }
+        } 
+
+        else if (meal instanceof Animal && meal.run) 
+            alert(`${this.name} не смог съесть ${meal.name} потому что он убежал!`);
+
+        else alert("Животное съеденное или слишком большое.");
+    }
+
+}
+ 
+class Goose extends Herbivore {
+    constructor(name, weight, size, ratio, run){
+        super(name, weight, size, ratio);
+        this.run = run;
+    }
+
+    talk () { alert(`${this.name} разглагольствует: меньше домашек!`); }
+
+    run = () => {
+        if (this.run) alert(`${this.name} убегает!`);
+        else alert (`${this.name} не может бежать!`);
+    }
+}
+
+class Wolf extends Predator {
+    constructor (name, weight, size, speed) {
+        super (name, weight, size);
+        this.speed = speed;
+    }
+
+    speedup (){
+        alert("Волчара ускорился к добыче!");
+        this.speed = this.speed * 2;
+    }
+    
+    eat (meal){
+        if ((meal instanceof Animal && !meal instanceof Wolf) || meal instanceof Wolf) {
+            if (meal.weight < this.weight) {
+                if (meal.size < this.size) {
+                    if (!this.stomach.includes(meal) && !meal.run) {
+                        alert(`${this.name}, съел ${meal.name}, печалька! Анализ: вес - ${this.weight}, размер - ${this.size}`);
+                        this.stomach.push(meal);
+                        this.size = this.size + meal.size * 0.2;
+                        this.weight = this.weight + meal.weight * 0.2;
+                    }
+                }
+            }
+
+
+        } 
+        else super.eat(meal);
+    }
+}
+    
+
+
+let herbFood = ["Трава", "Листья" /*, "Хохлы"*/];
+
+let wolf1 = new Wolf("Ерден lvl 20", 120, 200, 20);
+let wolf2 = new Wolf("Ерден lvl 10", 90, 150, 30);;
+
+let goose1 = new Goose("Алан lvl 2", 20, 50, herbFood, true);
+let goose2 = new Goose("Алан lvl 1", 10, 15, herbFood, false);
+
+
+wolf1.talk();
+goose1.talk();
+
+goose1.eat("Листья"); 
+
+wolf2.eat(goose1);
+goose1.run;
+
+wolf1.eat(goose2);
+wolf1.eat(wolf2);
+
+</script>

@@ -1,0 +1,204 @@
+<script>
+
+class Car {
+    constructor (manufacture, model, yearOfManufacture, averageSpeed) {
+        this.manufacture = manufacture;
+        this.model = model;
+        this.yearOfManufacture = yearOfManufacture;
+        this.averageSpeed = averageSpeed;
+        this.relax = 4;
+
+        document.write(`
+        Производитель: ${this.manufacture}.<br>
+        Модель: ${this.model}.<br>
+        Год выпуска: ${yearOfManufacture} г.<br>
+        Средняя скорость: ${this.averageSpeed} км/ч.<br>
+        <p style='margin-bottom: 20px'></p>
+        `);
+    }
+
+    go (word, distance) {
+        if (word === 'Поехали') {
+            let estimatedTime = distance / Math.floor(this.averageSpeed);
+            let timeSpent = estimatedTime;
+            let count = 1; 
+
+            for (let t = 4; t <= estimatedTime; t += 4) estimatedTime += 1;
+            estimatedTime -= 1;
+
+            // Для вывода в виде реального времени
+            let cout = (Math.floor(estimatedTime) * 6) * 1000;
+
+            console.log('Время через которое выведет: ' + cout);
+
+            setTimeout( () => {
+                return document.write(`
+                <p style='margin: 20px 0;'>
+                Приехали!<br>
+                Машина: ${this.manufacture}.<br>
+                Расстояние: ${distance} км.<br>
+                Предпологаемое время пути: ~ ${Math.floor(timeSpent)} ч.<br>  
+                Потрачение время на путь: ~ ${Math.floor(estimatedTime)} ч.<br>
+                </p>
+                `);
+
+            }, cout);
+        }
+        else alert('Введите кодовое слово для отправки!');
+    }
+}
+
+class Gruzovik extends Car {
+    constructor (manufacture, model, yearOfManufacture, averageSpeed, weight) {
+        super (manufacture, model, yearOfManufacture, averageSpeed);        
+        this.weight = weight;
+
+        document.write(`Вес: ${this.weight} кг.<br>`);
+    }
+
+    go (word, distance) {
+        if (word === 'Поехали') {
+            let weightCalc = () => {
+                let count = 1;
+
+                for (let i = 5000; i < this.weight; i += 1000) count++;
+                
+                return count += 20;
+            }
+            let estimatedTime = distance / (this.averageSpeed - weightCalc());
+            let timeSpent = estimatedTime;
+            let count = 1; 
+
+            for (let t = 4; t <= estimatedTime; t += 4) estimatedTime += 1;
+            estimatedTime -= 1;
+
+            // Для вывода в виде реального времени
+            let cout = (Math.floor(estimatedTime) * 6) * 1000;
+
+            console.log('Время через которое выведет: ' + cout);
+
+            setTimeout( () => {
+                return document.write(`
+                <p style='margin: 20px 0;'>
+                Приехали!<br>
+                Машина: ${this.manufacture}.<br>
+                Расстояние: ${distance} км.<br>
+                Предпологаемое время пути: ~ ${Math.floor(timeSpent)} ч.<br>  
+                Потрачение время на путь: ~ ${Math.floor(estimatedTime)} ч.<br>
+                </p>
+                `);
+
+            }, cout);
+        }
+
+        else alert('Введите кодовое слово для отправки!');
+    }
+}
+
+function getRandom () {
+    return Math.floor(Math.random() * (5 - 1) + 1);
+}
+
+class Bus extends Car {
+    constructor (manufacture, model, yearOfManufacture, averageSpeed, peoples) {
+        super (manufacture, model, yearOfManufacture, averageSpeed);        
+        this.peoples = peoples;
+    }
+
+    go (word, distance, data) {
+        if (word === 'Поехали') 
+        {
+            if (data < 8 || data > 10) alert('Вы опоздали!');
+
+            else {
+                let weightCalc = (peoples) => {
+                    let count = 1;
+
+                    for (let i = 2; i <= peoples; i += 2) count++;
+
+                    return count += 10;
+                }
+                let estimatedTime = distance / (this.averageSpeed - weightCalc(this.peoples));
+                let timeSpent;
+                let count = 0; 
+
+                for (let t = 0.5; t <= estimatedTime; t += 0.5) {
+                    this.peoples += getRandom();
+                    this.peoples -= getRandom();
+                    timeSpent = distance / (this.averageSpeed - weightCalc(this.peoples))
+
+                    // console.log('weightcalc ' + weightCalc(this.peoples));
+                    // console.log(this.peoples);
+                    // console.log('Время ' + timeSpent);
+                
+                    // console.log(weightCalc());
+                    let v = (this.averageSpeed - weightCalc(this.peoples)) / timeSpent;
+                    let s = v * timeSpent;
+                    count += s;
+
+                    // console.log(count);
+                    // console.log(v);
+                
+                    // console.log('V ' + v);
+                    // console.log('S ' + s);
+                    timeSpent = s / v;
+                    // console.log('Потраченное время ' + timeSpent);
+                    // console.log(estimatedTime);
+                }
+
+                let minutes = 1.66; // 50/30
+
+                // два знака после запятой
+                let digits = timeSpent.toString().charAt(2) + timeSpent.toString().charAt(3) 
+                digits = Number(digits);
+                count = 0;
+
+                // Узнаем минуты
+                for (let i = minutes; i < digits; i += minutes) count++; 
+
+                // console.log(timeSpent.toFixed(2));
+                // console.log(count);
+
+                if (Math.round(estimatedTime) > timeSpent) minutes = `приехали с опозданием на ${count} минут`;
+                if (Math.round(estimatedTime) < timeSpent) minutes = `приехали с опережением на ${count} минут`;
+                if (count === 0) minutes = `приехали вовремя!`;
+
+
+                // Для вывода в виде реального времени
+                let cout = (Math.floor(estimatedTime) * 6) * 1000;
+
+                console.log('Время через которое выведет: ' + cout);
+        
+                setTimeout( () => {
+                    return document.write(`    
+                    <p style='margin: 20px 0;'>
+                    Приехали!<br>
+                    Машина: ${this.manufacture}.<br>
+                    Расстояние: ${distance} км.<br>
+                    Предпологаемое время пути: ~${Math.floor(estimatedTime)} ч.<br>  
+                    Потрачение время на путь: ${minutes}<br>
+                    </p>
+                    `);
+
+                }, cout);
+            }
+        }
+
+        else alert('Введите кодовое слово для отправки!');
+    }
+}
+
+// Второй параметр у метода go - это расстояние!
+let car = new Car ('Mercedes', 'AMG', 2023, 120);
+console.log(car.go('Поехали', 500));
+
+let gruzovik = new Gruzovik ('Камаз', '5410', 1980, 80, 10000);
+console.log(gruzovik.go('Поехали', 200));
+
+// Третий параметр у метода go - это время отправления!
+let bus = new Bus ('Лиаз', '677', 1970, 100, 60);
+let date = new Date('December 25, 2023 10:00:00');
+
+console.log(bus.go('Поехали', 500, date.getHours()));
+
+</script>

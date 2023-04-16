@@ -1,0 +1,54 @@
+<script text="text/javascript">
+
+let intRows = prompt('Введите количество строк матрицы:');
+let intCols = prompt('Введите количество столбцов матрицы:');
+
+function inputMatrixRandom (intRows, intCols) {
+    let matrix = [];
+
+    for (let i = 0; i < Number(intRows); i++) {
+        matrix[i] = [];
+
+        for (let j = 0; j < Number(intCols); j++) 
+            matrix[i][j] = Math.floor(Math.random() * (10 - (-10))) + (-10);
+    }
+
+    return matrix;    
+}
+
+function diagonalUnderTopMultiply (matrix) {
+    let topDigits = 0;
+    let underDigits = 0;
+
+    for (let r in matrix) {
+        for (let c in matrix[r]) {
+            if (r < c && matrix[r][c] > 0) topDigits += matrix[r][c];
+            if (r > c && matrix[r][c] < 0) underDigits += matrix[r][c];
+        }
+    }
+
+    let abs;
+
+    if (Math.abs(topDigits) === Math.abs(underDigits)) abs = 'истина';
+    else abs = 'ложь';  
+
+    let res = `Сумма положительных элементов над главной диагональю = ${topDigits}
+Сумма отрицательных элементов под главной диагональю = ${underDigits}
+Сравнение по модулю: ${abs}.`;
+    
+    return res;
+}
+
+function test_diagonalUnderTopMultiply() {
+    console.assert(!isNaN(intRows), 'Ошибка! Вы ввели буковки');
+    console.assert(!isNaN(intCols), 'Ошибка! Вы ввели буковки');
+}
+
+let res = diagonalUnderTopMultiply(inputMatrixRandom(intRows, intCols));
+let matrix = inputMatrixRandom(intRows, intCols);
+
+test_diagonalUnderTopMultiply();
+console.log(matrix);
+console.log(res);
+
+</script>

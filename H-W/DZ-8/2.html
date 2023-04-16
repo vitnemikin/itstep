@@ -1,0 +1,42 @@
+<script>
+
+const str = 'Из входной строки определить 3 наиболее часто встречаемых символа в ней.';
+let dict = 'а,б,в,г,д,е,ё,ж,з,и,й,к,л,м,н,о,п,р,с,т,у,ф,х,ц,ч,ш,щ,ъ,ы,ь,э,ю,я';
+const dictionary = dict.split(',');
+
+function top3(str, dict) {
+    let count = 0;
+    let stack = [];
+
+    for (let charD of dict) 
+        for (let charS of str) 
+            if (charD === charS) stack.push(charD);
+        
+    return stack;
+}
+
+function countIdentical(arr) {
+    let count = {};
+  
+    for (let elem of arr) {
+        if (elem in count) count[elem]++;
+        else count[elem] = 1;
+    }
+  
+    return count;
+}
+
+function findLargestValues(obj, count) {
+    let keys = Object.keys(obj);
+  
+    keys.sort((a, b) => obj[b] - obj[a]);
+  
+    return keys.slice(0, count);
+}
+
+let result = findLargestValues(countIdentical(top3(str, dictionary)), 3) 
+console.log(top3(str, dictionary)); 
+console.log(countIdentical(top3(str, dictionary)));
+console.log('Самые встречающиеся элементы: ' + result);
+
+</script>

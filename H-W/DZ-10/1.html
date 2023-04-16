@@ -1,0 +1,91 @@
+<script>
+
+function Employee() {
+    this.id = -1;
+    this.firstName = "";
+    this.lastName = "";
+    this.birthDate = "";
+    this.hireDate = "";
+    this.fireDate = "";
+    this.position = "";
+    this.salary = 0;
+};
+
+let database = [];
+
+test_newEmployee();
+
+newEmployee("Виталий Немыкин", "1984.08.05", "преподаватель", 700000);
+newEmployee("Гульжан Каракул", "1985.08.05", "системный программист", 800000);
+newEmployee("Пётр Карлин", "1986.08.05", "frontend программист", 800000);
+
+function newEmployee(fullName, birthDate, position, salary) {
+    let [firstName, lastName] = fullName.split(" ");
+    if (!firstName) return {id:-1, errorDescription: "firstName not specified"};
+    if (!lastName) return {id:-1, errorDescription: "lastName not specified"};
+    if (!birthDate) return {id:-1, errorDescription: "birthDate not specified"};
+    if (!position) return {id:-1, errorDescription: "position not specified"};
+    if (!salary) return {id:-1, errorDescription: "salary not specified"};
+
+    for (let x of database) {
+        if (x.firstName === firstName && x.lastName === lastName)
+            return {id:-1, errorDescription: "Exists"};
+    }
+
+//  console.log(fullName, database.length);
+   
+    let worker = new Employee();
+    worker.id = database.length;
+    worker.firstName = firstName;
+    worker.lastName = lastName;
+    worker.hireDate = new Date().toDateString();
+    birthDate = new Date(birthDate);
+    
+    if (!birthDate) return {id:-1, errorDescription: "birthDate not valid"};
+    
+    worker.birthDate = birthDate.toDateString();
+    worker.position = position;
+    worker.salary = salary;
+
+//    console.log(worker);
+    database.push(worker);
+    
+    return {id: worker.id, errorDescription: ""};
+
+}
+
+// Tests...
+
+function test_newEmployee() {
+
+    // Test 1...
+
+    let args = ["Иванов Амир", "2012.12.12", "менеджер", 80000];
+    let res  = JSON.stringify({id:0, errorDescription: ""});
+    let fact = newEmployee(...args);
+    console.assert( JSON.stringify(fact) === res, "Test 1 failed!", fact);
+
+    // Test 2...
+
+    args = ["ИвановАмир", "2012.12.12", "менеджер", 80000];
+    res  = JSON.stringify({id:-1, errorDescription: "lastName not specified"});
+    fact = newEmployee(...args);
+    console.assert( JSON.stringify(fact) === res, "Test 2 failed!", fact );
+
+    // Test 3...
+
+    args = ["Иванов Амир", "2012.12.12", "менеджер", 80000];
+    res  = JSON.stringify({id:-1, errorDescription: "Exists"});
+    fact = newEmployee(...args);
+    console.assert( JSON.stringify(fact) === res, "Test 3 failed!", fact );
+
+    // Test 4...
+
+    args = ["Петров Амир", "", "менеджер", 80000];
+    res  = JSON.stringify({id:-1, errorDescription: "birthDate not specified"});
+    fact = newEmployee(...args);
+    console.assert( JSON.stringify(fact) === res, "Test 4 failed!", fact );
+
+}
+
+</script>

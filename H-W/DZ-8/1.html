@@ -1,0 +1,14 @@
+<script>
+    
+const str = 'йцуйцуфыва';
+
+function first_last(letter, str) {
+  const first = str.indexOf(letter);
+  const last = str.lastIndexOf(letter);
+  
+  return (last === -1) ? [-1, -1] : [first, last];
+}
+
+console.log(first_last('у', str)); 
+
+</script>

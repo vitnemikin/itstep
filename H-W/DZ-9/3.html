@@ -1,0 +1,54 @@
+<script>
+let userInput = 'function foo (index = 1, len, flag = true, x = 1)';
+// Убираем из строки все символы
+let str = userInput.replace(/[^a-zа-яё0-9\s]/gi, '');
+let arr = str.split(' ');
+
+// Достаем аргументы...
+let index = userInput.replace(/([^\)]+)\(/g, '');
+let idx = index.split(', ');
+idx = String(idx);
+idx = idx.replace(/=/g, 'значение по умолчанию:');
+idx = idx.replace(/\)/g, '');
+idx = idx.split(',');
+
+for (let i in idx) 
+    if (idx[i].length < 25) 
+        idx[i] += ' значение по умолчанию: undefined'; 
+
+// Удаляем все пустые элементы в массиве...
+array = arr.filter(function (el) {
+    return (el != null && el != "" || el === 0);
+});
+
+// Узнаем количество аргументов...
+let count = 1;
+
+for (let char of userInput) 
+    if (char === ',') count++;
+
+// Выводим все...
+document.write(`Пример: '${userInput}'<br>`);
+document.write(`
+Вывод:<br>
+Имя функции: ${arr[1]}<br>
+Количество аргументов: ${count}<br>
+`);
+
+// Выводим аргументы...
+count = 1;
+let i = 0;
+
+for (let char of userInput) {
+    let args = `<p style='margin: 0 20px'>имя аргумента ${count}: ${idx[i]}</p>`;
+
+    if (char === ',') {
+        document.write(args);
+        count++;        
+        i++
+    }
+
+    if (char === userInput.at(-1)) document.write(args);
+}
+
+</script>

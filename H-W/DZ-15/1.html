@@ -1,0 +1,177 @@
+<script>
+
+let dictionary = ['борщ', 'гриб', 'лагман', 'пальто', 'брод', 'музыка', 'лес', 'кожа', 'алан', 'лох'];
+let wordsArr = [
+    [ 'о', 'п', 'в', 'щ', 'р', 'о', 'б', 'а' ],
+    [ 'д', 'г', 'р', 'и', 'б', 'о', 'ы', 'б' ], 
+    [ 'л', 'а', 'г', 'м', 'а', 'н', 'э', 'р' ], 
+    [ 'е', 'г', 'п', 'а', 'л', 'ь', 'т', 'о' ], 
+    [ 'с', 'м', 'у', 'з', 'ы', 'к', 'а', 'д' ], 
+    [ 'х', 'т', 'р', 'и', 'к', 'о', 'ж', 'а' ],
+    [ 'о', 'н', 'а', 'л', 'а', 'о', 'ж', 'а' ],
+    [ 'л', 'н', 'в', 'п', 'п', 'о', 'ж', 'а' ]
+]; 
+// гриб. пальто. музыка. кожа
+
+// Транспонирование матрицы 
+function transpose_m (matrix) {
+    let m = matrix.length;
+    let n = matrix[0].length;
+    let AT = [];
+
+    for (let i = 0; i < n; i++){ 
+        AT[ i ] = [];
+        for (let j = 0; j < m; j++) AT[i][j] = matrix[j][i];
+    }
+
+    return AT;
+}
+
+// Нахождение по строкам...
+
+function detectWordsAtRows (dict, matrix) {
+    document.write('<h1>Нахождение слов по строкам</h1>');
+
+    // Нахождение всех слов по строке...
+
+    let count = 0;
+
+    document.write('<h3>Нахождение слева направо</h3>')
+ 
+    let leftRight = dict.reduce((accumulator, word) => {
+        let k = 0;
+        let preRes = [];
+        let result = [];
+        let resultReversed = []
+        let eque = 0;
+        let revMat = [];
+        
+        // Слева направо...
+        
+        for (let r in matrix) {
+            for (let c in matrix[r]) {        
+                if (word[k] === undefined) continue;
+                if (word[k] !== matrix[r][c]) k = 0;
+                if (word[k] === matrix[r][c]) eque += 1;
+                else eque = 0;
+            
+                // console.log(eque);
+                // console.log('MATRIX: ' + matrix[r][c]);
+                // console.log('DICT: ' + word[k]);
+            
+                if (eque === word.length - 1) {
+                    preRes.push(`'${word}' - строка ${matrix[r]}, направление слева направо`);
+                    count += 1;
+                    
+                    document.write(`Слева направо: ${preRes} <br>`);
+                }   
+            
+                k++;
+            }
+        }
+
+    }, []);
+
+    document.write('<h3>Нахождение справа налево</h3>');
+
+    let rightLeft = dict.reduce((accumulator, word) => {
+        let k = 0;
+        let preRes = [];
+        let result = [];
+        let resultReversed = []
+        let eque = 0;
+        let revMat = [];
+
+        // Cправа налево...
+
+        // Переворачирование всех строк в матрице... 
+        for (let r in matrix) {
+            for (let c in matrix[r]) {
+                const reverse = arr => [...arr].map(arr.pop, arr);
+                let preRevMat = reverse(matrix[r]);
+                revMat.push(preRevMat);
+            }
+        }
+
+        // Тот же алгоритм что и выше...
+        for (let r in revMat) {
+            for (let c in revMat[r]) {
+                // if (word[k] === undefined) continue;
+                if (word[k] !== revMat[r][c]) k = 0;
+                if (word[k] === revMat[r][c]) eque += 1;
+                else eque = 0;
+
+                // console.log(revMat[r]);
+                // console.log(eque);
+                // console.log('MATRIX: ' + revMat[r][c]);
+                // console.log('DICT: ' + word[k]);
+            
+                if (eque === word.length - 1) {
+                    resultReversed = `'${word}' - строка ${matrix[r]}, направление справа налево`;
+                    count++;
+                    document.write(`Слева направо: ${resultReversed} <br>`);
+                }
+
+                k++;
+            }
+        }
+
+    }, []);
+
+    // return res;
+}
+
+//---------------------------------------------------------------------------------------------------------------------
+
+// Нахождение по столбцам...
+
+
+function detectWordsAtСols (dict, matrix) {
+    document.write('<h1>Нахождение слов по столбцам (транспонированной матрице)</h1>');
+
+    matrix;
+
+    // Нахождение всех слов по строке...
+
+    let count = 0;
+
+    document.write('<h3>Нахождение слева направо и справа налево</h3>')
+
+    let leftRight = dict.reduce((accumulator, word) => {
+        let k = 0;
+        let preRes = [];
+        let result = [];
+        let resultReversed = []
+        let eque = 0;
+        let revMat = [];
+    
+        // Слева направо...
+    
+        for (let r in matrix) {
+            for (let c in matrix[r]) {        
+                if (word[k] === undefined) continue;
+                if (word[k] !== matrix[r][c]) k = 0;
+                if (word[k] === matrix[r][c]) eque += 1;
+                else eque = 0;
+        
+                // console.log(eque);
+                // console.log('MATRIX: ' + matrix[r][c]);
+                // console.log('DICT: ' + word[k]);
+        
+                if (eque === word.length - 1) {
+                    preRes.push(`'${word}' - строка ${matrix[r]}, направление слева направо`);
+                    count += 1;
+                
+                    document.write(`Слева направо: ${preRes} <br>`);
+                }   
+        
+                k++;
+            }
+        }
+
+    }, []);
+}
+
+console.log(detectWordsAtСols(dictionary, transpose_m(wordsArr)));
+console.log(detectWordsAtRows(dictionary, wordsArr));   
+</script>

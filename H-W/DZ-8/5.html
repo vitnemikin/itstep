@@ -1,0 +1,16 @@
+<script>
+
+let str = 'гр@оо@лк@оц@ва';
+
+function cleanStr (str) {
+    while (str.indexOf('@') !== -1) {
+        let index = str.indexOf('@');
+        str = str.substring(0, index - 1) + str.charAt(index - 1) + str.substring(index + 1);
+    }
+    
+    console.log(str);
+}
+
+console.log(cleanStr(str));
+
+</script>

@@ -1,0 +1,55 @@
+<script text="text/javascript">
+
+let userInput = 'От дома 2 до 3, от дома 2 до 4';
+// Достаем цифорки
+let arr = userInput.replace(/[^0-9]/g, '');
+
+let microStreet = [
+        /* 1  | 2  | 3  | 4 */ 
+    /*1*/ [0, 342, 423, 187], 
+    /*2*/ [236, 0, 330, 251],
+    /*3*/ [472, 346, 0, 434],
+    /*4*/ [295, 198, 622, 0]
+];
+
+let count = 0;
+let preRes = [];
+
+for (let digit of arr) {
+    let i = 0;
+    let j = 0;
+    
+    digit = Number(digit) - 1;
+
+    if (count % 2 === 0) {
+        j = digit;
+        prevDig = j;
+    } 
+
+    if (count % 2 == 1) {
+        j = prevDig;
+        i = digit;
+    }
+
+    preRes.push(microStreet[j][i]);
+    count++;
+}
+
+let res = [];
+count = 0;
+
+for (let i in preRes) {
+    if (count % 2 == 1) {
+        res.push(preRes[i]);
+    }
+    count++; 
+}
+
+// Вывод...
+
+document.write(`
+${userInput}<br>
+Вывод: ${res};
+`);
+
+</script>

@@ -1,0 +1,18 @@
+<script>
+
+let str = 'мама:? мыла, ?!раму';
+
+function camel(str) {
+    let arr = [];
+
+    for (let i in str) {
+        if (i % 2 === 0) arr.push(str[i].toUpperCase());
+        else arr.push(str[i].toLowerCase());
+    }
+    
+    return arr.join('');
+}
+
+console.log(camel(str));
+
+</script>

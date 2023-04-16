@@ -1,0 +1,41 @@
+<script text="text/javascript">
+
+let intRows = prompt('Введите количество строк матрицы:');
+let intCols = prompt('Введите количество столбцов матрицы:');
+let getRandom = Math.floor(Math.random() * (10 - (-10))) + (-10);
+
+function inputMatrixRandom (intRows, intCols) {
+    let matrix = [];
+
+    for (let i = 0; i < Number(intRows); i++) {
+        matrix[i] = [];
+
+        for (let j = 0; j < Number(intCols); j++) {
+            matrix[i][j] = Math.floor(Math.random() * (10 - (-10))) + (-10);
+        }
+    }
+
+    return matrix;    
+}
+
+function summOddDigits (matrix) {
+    let res = 0
+    document.write('Введенный массив:<br>');
+    
+    for (let i = 0; i < Number(intRows); i++) {
+        for (let j = 0; j < Number(intCols); j++) {
+            document.write(matrix[i][j] + ' ');
+
+            if (matrix[i][j] % 2 !== 0) res += matrix[i][j];
+        }
+        document.write(" <br>");
+    }
+
+    document.write(`Cумма равна: ${res}`); 
+    return res;
+}
+
+summOddDigits(inputMatrixRandom(intRows, intCols));
+
+
+</script>

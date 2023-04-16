@@ -1,0 +1,49 @@
+<script>
+
+let str = '(""), "", {}, `""`, [';
+
+let checkIsBalanced = (expression) => {
+    // Инициализация стека
+    const stack1 = [];
+    const stack2 = [];
+    const stack3 = [];
+    // Проходим по каждому символу в строке
+    for (const symbol of str) {
+        // Смотрим, открывающий или закрывающий
+        // Если символ открывающий добавляем его в стек
+        if (symbol === '(') stack1.push(symbol);
+        // Если символ закрывающий
+        else if (symbol === ')') {
+            // Достаем из стека последний элемент
+            // Если стек пуст, значит для закрывающего не нашлось открывающего
+            // Значит баланса нет, возвращаем false
+            if (!stack1.pop()) return false;
+        }
+
+        // Здесь все аналогично что и выше
+        if (symbol === '{') stack2.push(symbol);
+        else if (symbol === '}') {
+            if (!stack2.pop()) return false;
+        }
+
+        if (symbol === '[') stack3.push(symbol);
+        else if (symbol === ']') {
+            if (!stack3.pop()) return false;
+        }
+    }
+
+    // Инициализация флажка
+    let flag = true;
+    // Если одно из условий не подойдет, то меняем флажок на ложь
+    if (stack1.length !== 0) flag = false;
+    if (stack2.length !== 0) flag = false;
+    if (stack3.length !== 0) flag = false;
+
+    
+    if (flag === false) return 'Все ли скобки закрыты? Nope';
+    else return 'Все ли скобки закрыты? Yeahh';
+};
+
+console.log(checkIsBalanced());
+
+</script>
