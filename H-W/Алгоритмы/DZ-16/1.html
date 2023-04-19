@@ -1,0 +1,22 @@
+<script>
+
+function jsonInput(jsonString){
+    try {
+        let jsonObject = JSON.parse(jsonString);
+    
+        for (let key in jsonObject) {
+            let value = jsonObject[key];
+            let type = typeof value;
+        
+            document.write(`ключ: '${key}', значение: ${value}, тип: ${type};`);
+        }
+    } catch (error) {
+        document.write("Некорректный JSON:", error.message);
+    }
+    
+}
+    
+let jsonString = prompt("Введите строку в формате JSON:");
+jsonInput(jsonString);
+    
+</script>
