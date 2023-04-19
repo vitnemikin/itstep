@@ -1,70 +1,30 @@
 <script>
-let userInput = +prompt('Введите размер матрицы:');
 
-function transpose_m(m) {
-    return m[0].map((_, i) => m.map((r) => r[i]));
+// Проблема в методе подсчета времени. 
+// Javascript считает разницу в миллисекундах, прошедших с 1970 года, поэтому и выходят такие вещи.
+
+function getDateDifference(date1, date2) {
+	if (!(date1 instanceof Date) || !(date2 instanceof Date)) {
+		throw new Error("Invalid arguments");
+		return;
+	}
+
+    let diffMs = date2.getTime() - date1.getTime();
+    let dayMs = 1000*60*60*24;
+    let monthMs = dayMs * 30.44;
+    let yearMs = dayMs * 365.25;
+
+    let years = Math.floor(diffMs/yearMs);
+    let months = Math.floor((diffMs % yearMs) / monthMs);
+    let days = Math.floor((diffMs % monthMs) / dayMs)
+    
+	return `${years} лет, ${months} месяцев, ${days} дней`;
 }
 
-function getSpiralMatrix(n) {
-    const A = new Array(n).fill().map(() => new Array(n));
-    let i = 0; // С чего начинается отсчет
-    let j;
-    let k;
-    let p = Math.floor(n / 2);
+let date1 = new Date(Date.parse("2023-03-01"));
+let date2 = new Date(Date.parse("2023-05-03"));
 
-    for (k = 1; k <= p; k++) {
-        // Присвоим значения верхней строке
-        for (j = k - 1; j < n - k + 1; j++) 
-            A[k-1][j] = i++; 
-    
-        // Присвоим значения правому столбцу
-        for (j = k; j < n - k + 1; j++) 
-            A[j][n-k] = i++; 
-        
-    
-        // Присвоим значения нижней строке
-        for (j = n - k - 1; j >= k - 1; --j) 
-            A[n-k][j] = i++; 
+alert(getDateDifference(date1, date2));
 
-        // Присвоим значения левому столбцу
-        for (j = n - k - 1; j >= k; j--) 
-            A[j][k-1] = i++; 
-    }
-    
-    // Если n нечетно, назначим центральный элемент
-    if (n % 2 == 1) A[p][p] = n * n; 
-    
-    return A;
-}
-
-// function test_getSpiralMatrix() {
-// 	let size = [2,2];
-// 	let expect = [[3,0],
-//     			  [2,1]];
-// 	console.assert(getSpiralMatrix(...size).toString() === expect.toString());
-
-// 	size = [4,5];
-// 	expect = [[10, 11, 12, 13, 0],
-// 			  [ 9, 18, 19, 14, 1],
-// 		      [ 8, 17, 16, 15, 2],
-// 		      [ 7, 6,   5,  4, 3]];
-
-// 	console.assert(getSpiralMatrix(...size).toString() === expect.toString());
-// 	console.assert(getSpiralMatrix().toString() === [].toString());
-// }
-
-
-// Инициализируем матрицу
-let matrix = getSpiralMatrix(userInput);
-
-// Транспонируем матрицу
-matrix = transpose_m(matrix);
-
-// Перевернем каждую строку в транспонированной матрице
-matrix.forEach(row => row.reverse());
-
-// Колхозий код выводим
-console.log(matrix);
-// test_getSpiralMatrix()
 
 </script>
