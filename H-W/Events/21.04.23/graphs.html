@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./graphs.css">
+    <title>Graphs</title>
+</head>
+
+<body>
+    <div class="cont">
+        <button id="form">Добавить новые данные</button>
+        <label class="lab">
+            Вид диаграммы:
+
+            <select id="select">
+                <option>Гистограмма</option>
+                <option>Круговая</option>
+                <option>Кольцевая</option>
+                <option>График</option>
+            </select>
+        </label>
+    </div>
+    <div class="holst">
+        <div class="holst-control">
+            <canvas id="canvas" style="overflow: scroll;"></canvas>
+        </div>
+    </div>
+</body>
+
+<script type="module" src="./module.js"></script>
+</html>
