@@ -1,0 +1,31 @@
+li {    
+    margin: 6px;
+    background-color: rgb(0, 0, 0, 0.8);
+    border: 1px solid gray;
+    color: white;
+    list-style: none;
+    width: 20%;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li p, li h3{ 
+    padding-left: 5px;
+}
+
+#new_user {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+} 
+
+label {
+    margin: 10px 0;
+}
+
+#submit {
+    margin-top: 20px;
+}
